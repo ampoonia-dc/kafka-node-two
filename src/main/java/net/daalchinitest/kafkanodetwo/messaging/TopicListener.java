@@ -14,6 +14,11 @@ public class TopicListener {
         log.info("Received message, topic = {}, message={}", BrokerConfig.TOPIC_CONSUME_ONCE_2, message);
     }
 
+    @KafkaListener(topics = BrokerConfig.TOPIC_CONSUME_ONCE_EACH, groupId = BrokerConfig.GROUP_COMMON)
+    public void consumeMessageOnceEach (String message) {
+        log.info("Received message, topic = {}, message={}", BrokerConfig.TOPIC_CONSUME_ONCE_EACH, message);
+    }
+
     @KafkaListener(topics = BrokerConfig.TOPIC_CONSUME_ALL, groupId = "${app.instance.id}")
     public void consumeMessageAll (String message) {
         log.info("Received message, topic = {}, message={}",BrokerConfig.TOPIC_CONSUME_ALL, message);
